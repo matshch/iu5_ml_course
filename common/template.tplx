@@ -105,9 +105,11 @@
 
     \vfill\vfill
 
+    ((*- set nb_author = nb.metadata.authors[0].name.split(" ") -*))
+
     \noindent Выполнил:\\
-    студент группы ИУ5-24М\\
-    Лещев А.\,О.\\[1em]
+    студент группы ((( nb.metadata.group )))\\
+    ((( nb_author[0] ))) ((( nb_author[1:] | map("first") | join(".\,") ))).\\[1em]
     \underline{\hspace{6cm}}
 
     \vfill
