@@ -9,7 +9,7 @@
 ## Подготовка Jupyter-ноутбука для&nbsp;формирования отчёта
 Чтобы превратить Jupyter-ноутбук в&nbsp;красивый отчёт, следует сделать следующее:
 
-1. Добавить следующие метаданные в&nbsp;ноутбук (Edit -> Edit Notebook Metadata в&nbsp;классическом интерфейсе, через плагин (`jupyterlab_nbmetadata`)[https://github.com/yuvipanda/jupyterlab-nbmetadata] в&nbsp;Jupyter&nbsp;Lab, или просто открыв ноутбук в&nbsp;текстовом редакторе):
+1. Добавить следующие метаданные в&nbsp;ноутбук (Edit -> Edit Notebook Metadata в&nbsp;классическом интерфейсе, через плагин [`jupyterlab_nbmetadata`](https://github.com/yuvipanda/jupyterlab-nbmetadata) в&nbsp;Jupyter&nbsp;Lab, или просто открыв ноутбук в&nbsp;текстовом редакторе):
     ```json
     {
       "authors": [
