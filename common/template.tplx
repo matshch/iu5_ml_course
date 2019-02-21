@@ -4,16 +4,23 @@
 \documentclass[a4paper,12pt]{article}
 ((* endblock docclass *))
 
+((*- set nb_title = nb.metadata.get('title', '') or resources['metadata']['name'] -*))
+
 ((* block packages *))
     \usepackage{fontspec}
-    \setsansfont{CMU Sans Serif}%{Arial}
-    \setmainfont{CMU Serif}%{Times New Roman}
-    \setmonofont{CMU Typewriter Text}%{Consolas}
+    \setsansfont{CMU Sans Serif}
+    \setmainfont{CMU Serif}
+    \setmonofont{CMU Typewriter Text}
+    % \setsansfont{Arial}
+    % \setmainfont{Times New Roman}
+    % \setmonofont{Consolas}
 
     \usepackage{polyglossia}
     \setmainlanguage{russian}
     \setotherlanguage{english}
     \PolyglossiaSetup{russian}{indentfirst=true}
+
+    \usepackage{cite}
 
     % Basic figure setup, for now with no caption control since it's done
     % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
@@ -53,9 +60,19 @@
                                 % normalem makes italics be italics, not underlines
 ((* endblock packages *))
 
-((* block margins *))
-    \geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=1.5cm}
-((* endblock margins *))
+((* block commands *))
+    \hypersetup{
+        breaklinks=true,  % so long urls are correctly broken across lines
+        hidelinks=true,%
+        ((* if 'authors' in nb.metadata *))%
+        pdfauthor={((( nb.metadata.authors | join(', ', attribute='name') )))},%
+        ((* endif *))%
+        pdflang={ru-RU},
+        pdftitle={Лабораторная работа ((* if 'lab_number' in nb.metadata *))№((( nb.metadata.lab_number )))((* endif *)) по дисциплине «Методы машинного обучения»},
+        pdfsubject={((( nb_title | escape_latex )))},
+    }
+    \geometry{tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=1.5cm}
+((* endblock commands *))
 
 ((*- block figure scoped -*))
     \begin{center}
@@ -64,12 +81,12 @@
     { \hspace*{\fill} \\}
 ((*- endblock figure -*))
 
-((*- set nb_title = nb.metadata.get('title', '') or resources['metadata']['name'] -*))
 ((* block title -*))
     \title{((( nb_title | escape_latex )))}
 ((*- endblock title *))
 
 ((* block predoc *))
+    \urlstyle{tt}
     \begin{titlepage}
     \begin{center}
     \hrule\vspace{1em}\small
@@ -103,3 +120,8 @@
 
     \setcounter{page}{2}
 ((* endblock predoc *))
+
+((* block bibliography *))
+    \bibliographystyle{ugost2008}
+    \bibliography{bib}
+((* endblock bibliography *))
