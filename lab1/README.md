@@ -5,3 +5,8 @@
 ```bash
 jupyter nbconvert --to pdf --template=../common/template.tplx eda_visualization.ipynb
 ```
+
+Для&nbsp;того, чтобы повторить вычисления в&nbsp;ноутбуке, не&nbsp;забудьте установить зависимости в&nbsp;ваше (возможно виртуальное) окружение:
+```bash
+pip3 install -r requirements.txt
+```
