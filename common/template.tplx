@@ -76,6 +76,10 @@
 ((* endblock packages *))
 
 ((* block commands *))
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy
+
+    % Setup hyperref package
     \hypersetup{
         breaklinks=true,  % so long urls are correctly broken across lines
         hidelinks=true,%
@@ -86,6 +90,8 @@
         pdftitle={Лабораторная работа ((* if 'lab_number' in nb.metadata *))№((( nb.metadata.lab_number )))((* endif *)) по дисциплине «Методы машинного обучения»},
         pdfsubject={((( nb_title | escape_latex )))},
     }
+
+    % GOST margins
     \geometry{tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=1.5cm}
 ((* endblock commands *))
 
