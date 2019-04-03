@@ -36,3 +36,16 @@ jupyter nbconvert --to pdf --template=../common/template.tplx eda_visualization.
 Вместо `pdf` можно использовать ключевое слово `latex`, чтобы получить готовый для&nbsp;редактирования `.tex`-файл. После редактирования следует использовать команду `xelatex` для&nbsp;компиляции этого файла в&nbsp;PDF.
 
 При&nbsp;необходимости, естественно, можно подправить `common/template.tplx`. Например, в&nbsp;нём вшито название предмета на&nbsp;титульном листе.
+
+### Возможные ошибки
+Под&nbsp;Windows может быть очень неочевидная ошибка такого вида:
+```
+! Undefined control sequence.
+<*> .\notebook
+              .tex
+?
+! Emergency stop.
+<*> .\notebook
+              .tex
+```
+Для её исправления придётся поправить исходный код `nbconvert`: с&nbsp;помощью команды `pip show nbconvert` найдите папку, в&nbsp;которой установлен `nbconvert`, в&nbsp;ней откройте для исправления файл `exporters/pdf.py` и в&nbsp;классе `PDFExporter` найдите свойство `writer`. У&nbsp;конструктора этого свойства уберите аргумент `kw={'build_directory': '.'}`, именно в&nbsp;нём и заключается проблема. Данная проблема отслеживается в&nbsp;соответствующем проекте: https://github.com/jupyter/nbconvert/issues/974.
