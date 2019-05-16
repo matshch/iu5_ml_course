@@ -60,6 +60,7 @@
     \AtBeginDocument{%
         \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
     }
+    \usepackage[breakable]{tcolorbox}
     \usepackage{upquote} % Upright quotes for verbatim code
     \usepackage{fancyvrb} % verbatim replacement that allows latex
     \usepackage{grffile} % extends the file name processing of package graphics 
@@ -110,28 +111,34 @@
     \urlstyle{tt}
     \begin{titlepage}
     \begin{center}
-    \hrule\vspace{1em}\small
-    \bf Московский государственный технический университет им. Н.Э.\,Баумана\\
-    Кафедра <<Системы обработки информации и управления>>\\[1em]
-    \hrule
+    МОСКОВСКИЙ ГОСУДАРСТВЕННЫЙ ТЕХНИЧЕСКИЙ УНИВЕРСИТЕТ\\им. Н.Э.\,Баумана\\[2em]
+    Кафедра <<Системы обработки информации и управления>>
     \end{center}
 
-    \vfill\vfill
+    \vfill
 
     \begin{center}
-    \Large Лабораторная работа ((* if 'lab_number' in nb.metadata *))№((( nb.metadata.lab_number )))((* endif *))\\
-    по~дисциплине\\{\LARGE<<Методы машинного обучения>>}\\
-    на~тему\\{\LARGE<<((( nb_title | escape_latex )))>>}
+    \Large
+    ОТЧЕТ\\[1em]
+    \large \textbf{Лабораторная работа ((* if 'lab_number' in nb.metadata *))№((( nb.metadata.lab_number )))((* endif *))}\\
+    по~курсу <<Проектирование интеллектуальных систем>>\\[1.5em]
+    Тема: <<((( nb_title | escape_latex )))>>
     \end{center}
 
-    \vfill\vfill
+    \vfill
 
     ((*- set nb_author = nb.metadata.authors[0].name.split(" ") -*))
 
-    \noindent Выполнил:\\
-    студент группы ((( nb.metadata.group )))\\
-    ((( nb_author[0] ))) ((( nb_author[1:] | map("first") | join(".\,") ))).\\[1em]
-    \underline{\hspace{6cm}}
+    \begin{flushright}
+    \begin{tabular}{ll}
+    ИСПОЛНИТЕЛЬ: & ((( nb_author[0] ))) ((( nb_author[1:] | map("first") | join(".\,") ))).\\[1em]
+    группа ((( nb.metadata.group ))) & \underline{\hspace{5cm}}\\[1em]
+    & <<\underline{\hspace{5mm}}>> \underline{\hspace{2.5cm}} 2019~г.\\[3em]
+    ПРЕПОДАВАТЕЛЬ: & Терехов В.\,И.\\[1em]
+    & \underline{\hspace{5cm}}\\[1em]
+    & <<\underline{\hspace{5mm}}>> \underline{\hspace{2.5cm}} 2019~г.\\[1em]
+    \end{tabular}
+    \end{flushright}
 
     \vfill
 
@@ -142,6 +149,7 @@
     \end{titlepage}
 
     \setcounter{page}{2}
+    \tableofcontents
 ((* endblock predoc *))
 
 ((* block bibliography *))
